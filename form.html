@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        /* CSS for styling the form */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .inside {
+            width: 25%;  
+            /* margin: 0 auto; */
+            background-color: linen;
+            height: 90vh;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 10px black;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .names{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        h2{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inside">
+        <h2>SURVEY FORM</h2>
+        <form id="surveyForm">
+     <div class="names">
+        <section class="fname">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required><br>
+        </section>
+        <section class="lname">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required><br>
+        </section>
+    </div><br>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required><br><br>
+
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="" disabled selected>Select a country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <!-- Add more countries here -->
+            </select><br><br>
+
+            <label>Gender:</label>
+            <input type="checkbox" id="male" value="Male"> Male
+            <input type="checkbox" id="female" value="Female"> Female<br><br>
+
+            <label for="profession">Profession:</label>
+            <input type="text" id="profession" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required><br><br>
+
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="tel" id="mobileNumber" required><br><br>
+
+            <input type="button" value="Submit" onclick="submitForm()">
+            <input type="button" value="Reset" onclick="resetForm()">
+        </form>
+    </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const dob = document.getElementById("dob").value;
+            const country = document.getElementById("country").value;
+            const gender = [];
+            if (document.getElementById("male").checked) {
+                gender.push("Male");
+            }
+            if (document.getElementById("female").checked) {
+                gender.push("Female");
+            }
+            const profession = document.getElementById("profession").value;
+            const email = document.getElementById("email").value;
+            const mobileNumber = document.getElementById("mobileNumber").value;
+
+            // Display the submitted data in a popup
+            const message = `
+                First Name: ${firstName}
+                Last Name: ${lastName}
+                Date of Birth: ${dob}
+                Country: ${country}
+                Gender: ${gender.join(", ")}
+                Profession: ${profession}
+                Email: ${email}
+                Mobile Number: ${mobileNumber}
+            `;
+
+            alert("Submitted Data:\n\n" + message);
+
+            // Reset the form
+            document.getElementById("surveyForm").reset();
+        }
+
+        function resetForm() {
+            // Reset the form
+            document.getElementById("surveyForm").reset();
+        }
+    </script>
+</body>
+</html>
